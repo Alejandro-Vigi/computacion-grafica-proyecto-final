@@ -1,4 +1,4 @@
-# Blender 5.1.0 MTL File: 'cashier_area_main.blend'
+# Blender 5.0.1 MTL File: 'cashier_area_main.blend'
 # www.blender.org
 
 newmtl Barandal
@@ -101,6 +101,16 @@ d 1.000000
 illum 2
 map_Kd barandal.png
 
+newmtl Escaleras
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd logo_escaleras.png
+
 newmtl Ladrillo
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
@@ -191,6 +201,16 @@ d 1.000000
 illum 2
 map_Kd ladrillo_texture2.jpg
 
+newmtl Ladrillos2.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd ladrillo_texture3.jpg
+
 newmtl Ladrillos3
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
@@ -201,6 +221,36 @@ Ni 1.500000
 d 1.000000
 illum 2
 
+newmtl Ladrillos3.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd ladrillo_texture3.jpg
+
+newmtl Material
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd piedras_ventanilla.png
+
+newmtl Material.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd bote_blanco.png
+
 newmtl Material.002
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
@@ -210,6 +260,56 @@ Ni 1.500000
 d 1.000000
 illum 2
 map_Kd barandal.png
+
+newmtl Material.003
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd bote_azul.png
+
+newmtl Material.004
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd bote_azul.png
+
+newmtl Material.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd bote_verde.png
+
+newmtl Material.006
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd ventana.jpeg
+
+newmtl Material.007
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd horario2.png
 
 newmtl Muro
 Ns 250.000000
@@ -261,6 +361,16 @@ d 1.000000
 illum 2
 map_Kd muro_texture.png
 
+newmtl Muro1.003
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd piso_texture2.png
+
 newmtl Muro2
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
@@ -291,6 +401,16 @@ d 1.000000
 illum 2
 map_Kd piso_texture.png
 
+newmtl Muro2.003
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd piso_texture.png
+
 newmtl Muro3
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
@@ -310,6 +430,16 @@ Ni 1.500000
 d 1.000000
 illum 2
 map_Kd piso_texture2.png
+
+newmtl Muro3.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd piso_texture3.png
 
 newmtl Piso1
 Ns 250.000000
@@ -351,6 +481,36 @@ d 1.000000
 illum 2
 map_Kd piso2.png
 
+newmtl Techo
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd techo.jpg
+
+newmtl Ventana
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd ventana.jpeg
+
+newmtl ambulantaje
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd ambulantaje.png
+
 newmtl bancas_texture1.007
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
@@ -391,6 +551,76 @@ d 1.000000
 illum 2
 map_Kd column_texture.jpg
 
+newmtl horario1
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Horario1.png
+
+newmtl horario1.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Horario1.png
+
+newmtl horario1.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Horario1.png
+
+newmtl horario1.003
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd emergencias.jpeg
+
+newmtl horario1.004
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd riesgo_suicidio.png
+
+newmtl horario1.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd horario3.png
+
+newmtl horario1.006
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd riesgo_suicidio.png
+
 newmtl piedras
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
@@ -401,6 +631,36 @@ d 1.000000
 illum 2
 map_Kd piedras_texture.png
 
+newmtl piedras_ventanilla
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd piedras_ventanilla.png
+
+newmtl piedras_ventanilla2
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd piedras_ventanilla2.png
+
+newmtl piedras_ventanilla3
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd piedras_ventanilla3.png
+
 newmtl puerta
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
@@ -410,6 +670,106 @@ Ni 1.500000
 d 1.000000
 illum 2
 map_Kd barandal.png
+
+newmtl salida_emergencia
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd logo_salida_emergencia.png
+
+newmtl ventanilla_uno.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd ventanilla_uno.png
+
+newmtl ventanilla_uno.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd ventanilla_dos.png
+
+newmtl ventanilla_uno.003
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd plano_ingenieria.png
+
+newmtl ventanilla_uno.004
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd ventanilla_cuatro.png.jpeg
+
+newmtl ventanilla_uno.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd ventanilla_tres.png
+
+newmtl ventanilla_uno.006
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd ventanilla_cinco.png
+
+newmtl ventanilla_uno.007
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd ventanilla_cinco.png
+
+newmtl ventanilla_uno.008
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd plano_ingenieria.png
+
+newmtl ventanilla_uno.009
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd plano_ingenieria.png
 
 newmtl ventanillas
 Ns 250.000000
