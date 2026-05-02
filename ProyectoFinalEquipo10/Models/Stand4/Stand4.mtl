@@ -1,0 +1,26 @@
+# Blender 5.0.1 MTL File: 'Stand.Tipo3 (1).blend'
+# www.blender.org
+
+newmtl outdoor_table_chair_set_01_chair.001
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/LapOne MX/Downloads/outdoor_table_chair_set_01_1k.blend/textures/outdoor_table_chair_set_01_chair_diff_1k.png
+map_Ns C:/Users/LapOne MX/Downloads/outdoor_table_chair_set_01_1k.blend/textures/outdoor_table_chair_set_01_chair_rough_1k.png
+map_refl C:/Users/LapOne MX/Downloads/outdoor_table_chair_set_01_1k.blend/textures/outdoor_table_chair_set_01_chair_metal_1k.png
+map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/outdoor_table_chair_set_01_1k.blend/textures/outdoor_table_chair_set_01_chair_nor_gl_1k.png
+
+newmtl outdoor_table_chair_set_01_table.001
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/LapOne MX/Downloads/outdoor_table_chair_set_01_1k.blend/textures/outdoor_table_chair_set_01_table_diff_1k.png
+map_Ns C:/Users/LapOne MX/Downloads/outdoor_table_chair_set_01_1k.blend/textures/outdoor_table_chair_set_01_table_rough_1k.png
+map_refl C:/Users/LapOne MX/Downloads/outdoor_table_chair_set_01_1k.blend/textures/outdoor_table_chair_set_01_table_metal_1k.png
+map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/outdoor_table_chair_set_01_1k.blend/textures/outdoor_table_chair_set_01_table_nor_gl_1k.png
