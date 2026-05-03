@@ -1,26 +1,136 @@
-# Blender 5.0.1 MTL File: 'Stand.Tipo2.blend'
+# Blender 5.0.1 MTL File: 'Sin_nombre.blend'
 # www.blender.org
 
-newmtl standing_chalkboard_01_board
+newmtl Blanco
+Ns 250.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
-Ni 1.450000
+Ni 1.500000
 d 1.000000
 illum 2
-map_Kd C:/Users/LapOne MX/Downloads/standing_chalkboard_01_1k.blend/textures/standing_chalkboard_01_board_diff_1k.png
-map_Ns C:/Users/LapOne MX/Downloads/standing_chalkboard_01_1k.blend/textures/standing_chalkboard_01_board_rough_1k.png
-map_refl C:/Users/LapOne MX/Downloads/standing_chalkboard_01_1k.blend/textures/standing_chalkboard_01_board_metal_1k.png
-map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/standing_chalkboard_01_1k.blend/textures/standing_chalkboard_01_board_nor_gl_1k.png
+map_Kd blanco.jpg
 
-newmtl standing_chalkboard_01_frame
+newmtl Chocolate
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd madera.jpg
+
+newmtl Chocolate_Madera
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd madera.jpg
+
+newmtl Madera_Chocolate.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd madera.jpg
+
+newmtl Material.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd madera.jpg
+
+newmtl Material.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd madera.jpg
+
+newmtl Material.003
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd madera.jpg
+
+newmtl Material.008
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Liverpool3-removebg-preview.png
+
+newmtl Piso.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd 1.jpeg
+
+newmtl madera
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:/Users/LapOne MX/Downloads/standing_chalkboard_01_1k.blend/textures/standing_chalkboard_01_frame_diff_1k.png
-map_Ns C:/Users/LapOne MX/Downloads/standing_chalkboard_01_1k.blend/textures/standing_chalkboard_01_frame_rough_1k.png
-map_refl C:/Users/LapOne MX/Downloads/standing_chalkboard_01_1k.blend/textures/standing_chalkboard_01_frame_metal_1k.png
-map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/standing_chalkboard_01_1k.blend/textures/standing_chalkboard_01_frame_nor_gl_1k.png
+map_Kd madera.jpg
+map_Ns standing_chalkboard_01_frame_rough_1k.png
+map_refl standing_chalkboard_01_frame_metal_1k.png
+map_Bump -bm 1.000000 standing_chalkboard_01_frame_nor_gl_1k.png
+
+newmtl negro
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd negro.jpg
+
+newmtl pantalla
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Liverpool1.png
+
+newmtl pantalla.001
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Liverpool2.png
+map_Ns standing_chalkboard_01_board_rough_1k.png
+map_refl standing_chalkboard_01_board_metal_1k.png
+map_Bump -bm 1.000000 standing_chalkboard_01_board_nor_gl_1k.png
