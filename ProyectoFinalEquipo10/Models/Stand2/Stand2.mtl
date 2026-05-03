@@ -1,15 +1,5 @@
-# Blender 5.0.1 MTL File: 'StandTipo1.blend'
+# Blender 5.0.1 MTL File: 'Truper.blend'
 # www.blender.org
-
-newmtl Material
-Ns 250.000000
-Ka 1.000000 1.000000 1.000000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.500000
-d 1.000000
-illum 2
-map_Kd truper-1.png
 
 newmtl Material.001
 Ns 250.000000
@@ -31,35 +21,15 @@ d 1.000000
 illum 2
 map_Kd Trupper.png
 
-newmtl Material.004
+newmtl Material.003
 Ns 250.000000
 Ka 1.000000 1.000000 1.000000
 Ks 0.500000 0.500000 0.500000
 Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 3
-map_Kd 3.jpeg
-
-newmtl Material.006
-Ns 250.000000
-Ka 1.000000 1.000000 1.000000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
+Ni 1.500000
 d 1.000000
 illum 2
-map_Kd 4.jpeg
-
-newmtl Material.007
-Ns 250.000000
-Ka 1.000000 1.000000 1.000000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd 4.jpeg
+map_Kd truper-1.png
 
 newmtl Negro_chapopote
 Ns 250.000000
@@ -69,7 +39,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd 3.jpeg
+map_Kd negro.jpg
 
 newmtl blanco_
 Ns 250.000000
@@ -79,7 +49,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd 4.jpeg
+map_Kd blanco.jpg
 
 newmtl fucking_pared_gris
 Ns 250.000000
