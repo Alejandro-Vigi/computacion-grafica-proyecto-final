@@ -1,5 +1,195 @@
-# Blender 5.0.1 MTL File: 'Stand.Tipo4 (1).blend'
+# Blender 5.0.1 MTL File: 'None'
 # www.blender.org
+
+newmtl Material.001
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd -s 2 1 1 piedra.jpg
+
+newmtl Material.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd azul.png
+
+newmtl Material.003
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd azul.png
+
+newmtl Material.004
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd azul.png
+
+newmtl Material.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd azul.png
+
+newmtl Material.006
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd azul.png
+
+newmtl Material.007
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd azul.png
+
+newmtl Material.008
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd negro.jpg
+
+newmtl Material.009
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd azul.png
+
+newmtl Material.010
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd blanco.jpg
+
+newmtl Material.011
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd negro.jpg
+
+newmtl Material.012
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd blanco.jpg
+
+newmtl Material.013
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd blanco.jpg
+
+newmtl Material.014
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd azul.png
+
+newmtl Material.015
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd blanco.jpg
+
+newmtl Material.016
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd azul.png
+
+newmtl Material.017
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd negro.jpg
+
+newmtl Material.018
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Logo.png
+
+newmtl Material.019
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd tv_cemex.png
 
 newmtl modern_ceiling_globe
 Ka 1.000000 1.000000 1.000000
@@ -8,10 +198,10 @@ Ke 0.622958 0.541622 0.474550
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_diff_1k.jpg
-map_Ns C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_rough_1k.jpg
-map_refl C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_metal_1k.exr
-map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_nor_gl_1k.exr
+map_Kd modern_ceiling_lamp_01_diff_1k.jpg
+map_Ns modern_ceiling_lamp_01_rough_1k.jpg
+map_refl modern_ceiling_lamp_01_metal_1k.exr
+map_Bump -bm 1.000000 modern_ceiling_lamp_01_nor_gl_1k.exr
 
 newmtl modern_ceiling_lamp_01
 Ka 1.000000 1.000000 1.000000
@@ -20,10 +210,10 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_diff_1k.jpg
-map_Ns C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_rough_1k.jpg
-map_refl C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_metal_1k.exr
-map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_nor_gl_1k.exr
+map_Kd modern_ceiling_lamp_01_diff_1k.jpg
+map_Ns modern_ceiling_lamp_01_rough_1k.jpg
+map_refl modern_ceiling_lamp_01_metal_1k.exr
+map_Bump -bm 1.000000 modern_ceiling_lamp_01_nor_gl_1k.exr
 
 newmtl modern_ceiling_lamp_01_glass
 Ka 1.000000 1.000000 1.000000
@@ -33,20 +223,9 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Ns C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_rough_1k.jpg
-map_refl C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_metal_1k.exr
-map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_nor_gl_1k.exr
-
-newmtl modern_coffee_table_02_base
-Ka 1.000000 1.000000 1.000000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Kd C:/Users/LapOne MX/Downloads/modern_coffee_table_02_1k.blend/textures/modern_coffee_table_02_base_diff_1k.png
-map_Ns C:/Users/LapOne MX/Downloads/modern_coffee_table_02_1k.blend/textures/modern_coffee_table_02_base_rough_1k.png
-map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/modern_coffee_table_02_1k.blend/textures/modern_coffee_table_02_base_nor_gl_1k.png
+map_Ns modern_ceiling_lamp_01_rough_1k.jpg
+map_refl modern_ceiling_lamp_01_metal_1k.exr
+map_Bump -bm 1.000000 modern_ceiling_lamp_01_nor_gl_1k.exr
 
 newmtl modern_coffee_table_02_wood
 Ka 1.000000 1.000000 1.000000
@@ -55,6 +234,6 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:/Users/LapOne MX/Downloads/modern_coffee_table_02_1k.blend/textures/modern_coffee_table_02_wood_diff_1k.png
-map_Ns C:/Users/LapOne MX/Downloads/modern_coffee_table_02_1k.blend/textures/modern_coffee_table_02_wood_rough_1k.png
-map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/modern_coffee_table_02_1k.blend/textures/modern_coffee_table_02_wood_nor_gl_1k.png
+map_Kd azul.png
+map_Ns modern_coffee_table_02_wood_rough_1k.png
+map_Bump -bm 1.000000 modern_coffee_table_02_wood_nor_gl_1k.png
