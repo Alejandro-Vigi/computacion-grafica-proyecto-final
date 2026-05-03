@@ -1,4 +1,4 @@
-# Blender 5.0.1 MTL File: 'ford.blend'
+# Blender 5.0.1 MTL File: 'None'
 # www.blender.org
 
 newmtl Material.001
@@ -29,7 +29,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd blazul.png
+map_Kd azul.jpg
 
 newmtl Material.004
 Ns 250.000000
@@ -110,6 +110,16 @@ Ni 1.500000
 d 1.000000
 illum 2
 map_Kd Ford3.png
+
+newmtl Material.012
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd 1-removebg-preview.jpg
 
 newmtl ford
 Ns 250.000000
