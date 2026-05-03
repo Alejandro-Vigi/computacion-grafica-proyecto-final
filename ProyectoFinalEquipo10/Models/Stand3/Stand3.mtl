@@ -1,4 +1,4 @@
-# Blender 5.0.1 MTL File: 'Sin_nombre.blend'
+# Blender 5.0.1 MTL File: 'None'
 # www.blender.org
 
 newmtl Blanco
@@ -19,7 +19,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd madera.jpg
+map_Kd Liverpool5.jpg
 
 newmtl Chocolate_Madera
 Ns 250.000000
@@ -79,7 +79,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd Liverpool3-removebg-preview.png
+map_Kd Liverpool-removebg-preview.jpg
 
 newmtl Piso.002
 Ns 250.000000
