@@ -1,5 +1,65 @@
-# Blender 5.0.1 MTL File: 'Stand.Tipo1.blend'
+# Blender 5.0.1 MTL File: 'StandTipo1.blend'
 # www.blender.org
+
+newmtl Material.004
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd 3.jpeg
+
+newmtl Material.006
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd 4.jpeg
+
+newmtl Material.007
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd 4.jpeg
+
+newmtl Negro_chapopote
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd 3.jpeg
+
+newmtl blanco_
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd 4.jpeg
+
+newmtl fucking_pared_gris
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd 2.jpeg
 
 newmtl modern_ceiling_globe
 Ka 1.000000 1.000000 1.000000
@@ -8,10 +68,10 @@ Ke 0.622958 0.541622 0.474550
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_diff_1k.jpg
-map_Ns C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_rough_1k.jpg
-map_refl C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_metal_1k.exr
-map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_nor_gl_1k.exr
+map_Kd 4.jpeg
+map_Ns modern_ceiling_lamp_01_rough_1k.jpg
+map_refl modern_ceiling_lamp_01_metal_1k.exr
+map_Bump -bm 1.000000 modern_ceiling_lamp_01_nor_gl_1k.exr
 
 newmtl modern_ceiling_lamp_01
 Ka 1.000000 1.000000 1.000000
@@ -20,19 +80,29 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_diff_1k.jpg
-map_Ns C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_rough_1k.jpg
-map_refl C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_metal_1k.exr
-map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_nor_gl_1k.exr
+map_Kd 4.jpeg
+map_Ns modern_ceiling_lamp_01_rough_1k.jpg
+map_refl modern_ceiling_lamp_01_metal_1k.exr
+map_Bump -bm 1.000000 modern_ceiling_lamp_01_nor_gl_1k.exr
 
 newmtl modern_ceiling_lamp_01_glass
 Ka 1.000000 1.000000 1.000000
-Kd 0.800000 0.800000 0.800000
 Ks 0.340000 0.340000 0.340000
 Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Ns C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_rough_1k.jpg
-map_refl C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_metal_1k.exr
-map_Bump -bm 1.000000 C:/Users/LapOne MX/Downloads/modern_ceiling_lamp_01_1k.blend/textures/modern_ceiling_lamp_01_nor_gl_1k.exr
+map_Kd 4.jpeg
+map_Ns modern_ceiling_lamp_01_rough_1k.jpg
+map_refl modern_ceiling_lamp_01_metal_1k.exr
+map_Bump -bm 1.000000 modern_ceiling_lamp_01_nor_gl_1k.exr
+
+newmtl pta_madera
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd 1.jpeg
