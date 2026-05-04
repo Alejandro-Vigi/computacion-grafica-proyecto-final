@@ -147,38 +147,38 @@ int main()
 
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(2.5f, 0.0f, -1.0f));
-        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, -1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.6f));
+        model = glm::translate(model, glm::vec3(-7.5f, 0.0f, -13.5f));
+        model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.6f, 0.8f, 0.6f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         Stand1.Draw(shader);
 
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-3.0f, 0.0f, 7.0f));
-        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
+        model = glm::translate(model, glm::vec3(1.25f, 0.0f, -17.5f));
+        model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.245f, 0.35f, 0.175f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         Stand2.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-8.2f, 0.0f, 0.5f));
+        model = glm::translate(model, glm::vec3(-3.0f, 0.0f, -8.25f));
         model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
+        model = glm::scale(model, glm::vec3(0.315f, 0.4f, 0.21f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         Stand3.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-8.2f, 0.0f, -6.2f));
-        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+        model = glm::translate(model, glm::vec3(-3.0f, 0.0f, -1.0f));
+        model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.36f, 0.45f, 0.22f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         Stand4.Draw(shader);
 
         model = glm::mat4(1);
-        model = glm::translate(model, glm::vec3(-8.2f, 0.0f, -12.5f));
-        model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
+        model = glm::translate(model, glm::vec3(-3.1f, 0.0f, 6.5f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.35f, 0.4f, 0.21f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         Stand5.Draw(shader);
 
