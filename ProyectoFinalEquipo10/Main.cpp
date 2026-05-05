@@ -31,6 +31,7 @@
 // Other Libs
 #include "SOIL2/SOIL2.h"
 #include "stb_image.h"
+#include "Texture.h"
 
 // Properties
 const GLuint WIDTH = 1200, HEIGHT = 800;
@@ -117,6 +118,8 @@ float vertices[] = {
     -0.5f, 0.5f,-0.5f, 0.0f, 1.0f, 0.0f
 };
 
+
+
 int main()
 {
     // Init GLFW
@@ -174,6 +177,7 @@ int main()
     // Setup and compile our shaders
     Shader lightingShader("Shader/lighting.vs", "Shader/lighting.frag");
     Shader shader("Shader/modelLoading.vs", "Shader/modelLoading.frag");
+    Shader skyboxshader("Shader/skybox.vs", "Shader/skybox.frag");
 
     // Load models
     Model CashierArea((char*)"Models/CashierArea/CashierArea.obj");
@@ -183,18 +187,117 @@ int main()
 	Model Stand4((char*)"Models/Stand4/Stand4.obj");
 	Model Stand5((char*)"Models/Stand5/Stand5.obj");
 
+    GLfloat skyboxVertices[] = {
+        // Positions
+        -1.0f,  1.0f, -1.0f,
+        -1.0f, -1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,
+        1.0f,  1.0f, -1.0f,
+        -1.0f,  1.0f, -1.0f,
+
+        -1.0f, -1.0f,  1.0f,
+        -1.0f, -1.0f, -1.0f,
+        -1.0f,  1.0f, -1.0f,
+        -1.0f,  1.0f, -1.0f,
+        -1.0f,  1.0f,  1.0f,
+        -1.0f, -1.0f,  1.0f,
+
+        1.0f, -1.0f, -1.0f,
+        1.0f, -1.0f,  1.0f,
+        1.0f,  1.0f,  1.0f,
+        1.0f,  1.0f,  1.0f,
+        1.0f,  1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,
+
+        -1.0f, -1.0f,  1.0f,
+        -1.0f,  1.0f,  1.0f,
+        1.0f,  1.0f,  1.0f,
+        1.0f,  1.0f,  1.0f,
+        1.0f, -1.0f,  1.0f,
+        -1.0f, -1.0f,  1.0f,
+
+        -1.0f,  1.0f, -1.0f,
+        1.0f,  1.0f, -1.0f,
+        1.0f,  1.0f,  1.0f,
+        1.0f,  1.0f,  1.0f,
+        -1.0f,  1.0f,  1.0f,
+        -1.0f,  1.0f, -1.0f,
+
+        -1.0f, -1.0f, -1.0f,
+        -1.0f, -1.0f,  1.0f,
+        1.0f, -1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,
+        -1.0f, -1.0f,  1.0f,
+        1.0f, -1.0f,  1.0f
+    };
+
+
+    GLuint indices[] =
+    {  // Note that we start from 0!
+        0,1,2,3,
+        4,5,6,7,
+        8,9,10,11,
+        12,13,14,15,
+        16,17,18,19,
+        20,21,22,23,
+        24,25,26,27,
+        28,29,30,31,
+        32,33,34,35
+    };
+
     // VAO/VBO para los cubos indicadores de luces
-    GLuint VBO, VAO;
+    GLuint VBO, VAO, EBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
+
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+    // Position attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
     glEnableVertexAttribArray(0);
+    
+	// Normal attribute
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
     glBindVertexArray(0);
+
+    //Skybox
+    GLuint skyboxVBO, skyboxVAO;
+    glGenVertexArrays(1, &skyboxVAO);
+    glGenBuffers(1, &skyboxVBO);
+	glBindVertexArray(skyboxVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, skyboxVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(skyboxVertices), &skyboxVertices, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+
+    //Load textures
+    // Skybox de día
+    vector <const GLchar*> faces;
+    faces.push_back("SkyBox/day/right.png");
+    faces.push_back("SkyBox/day/left.png");
+    faces.push_back("SkyBox/day/top.png");
+    faces.push_back("SkyBox/day/bottom.png");
+    faces.push_back("SkyBox/day/back.png");
+    faces.push_back("SkyBox/day/front.png");
+    GLuint cubemapDay = TextureLoading::LoadCubemap(faces);
+
+    // Skybox de noche
+    vector<const GLchar*> facesNight;
+    facesNight.push_back("SkyBox/night/right.png");
+    facesNight.push_back("SkyBox/night/left.png");
+    facesNight.push_back("SkyBox/night/top.png");
+    facesNight.push_back("SkyBox/night/bottom.png");
+    facesNight.push_back("SkyBox/night/back.png");
+    facesNight.push_back("SkyBox/night/front.png");
+    GLuint cubemapNight = TextureLoading::LoadCubemap(facesNight);
 
     glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
 
@@ -344,9 +447,29 @@ int main()
 
         glBindVertexArray(0);
 
+        //Draw SkyBox
+        glDepthFunc(GL_LEQUAL);
+        skyboxshader.Use();
+        view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
+        glUniformMatrix4fv(glGetUniformLocation(skyboxshader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
+        glUniformMatrix4fv(glGetUniformLocation(skyboxshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+
+        glBindVertexArray(skyboxVAO);
+        glActiveTexture(GL_TEXTURE0);
+        GLuint currentSkybox = lightsOn ? cubemapNight : cubemapDay; // Se alterna el skybox segun sea modo día o modo noche
+        glBindTexture(GL_TEXTURE_CUBE_MAP, currentSkybox);
+        glUniform1i(glGetUniformLocation(skyboxshader.Program, "skybox"), 0);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
         // Swap the buffers
         glfwSwapBuffers(window);
     }
+
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
+    glDeleteVertexArrays(1, &skyboxVAO);
+    glDeleteBuffers(1, &skyboxVBO);
 
     glfwTerminate();
     return 0;
