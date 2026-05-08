@@ -22,6 +22,7 @@
 #include "Shader.h"
 #include "Camera.h"
 #include "Model.h"
+#include "Texture.h"
 
 // GLM Mathemtics
 #include <glm/glm.hpp>
@@ -55,6 +56,11 @@ GLfloat lastFrame = 0.0f;
 // Modo día/noche — tecla P para cambiar entre ambos modos
 bool lightsOn = false;  // false = modo día (ambient alto, luces apagadas)
                         // true  = modo noche (ambient bajo, luces encendidas)
+
+// Control de animación del FBX del robot
+bool playAnimationRobot = false;
+// Tiempo acumulado de animación del robot
+float robotAnimTime = 0.0f;
 
 // Posiciones de las 3 point lights
 glm::vec3 pointLightPositions[] = {
@@ -132,13 +138,13 @@ int main()
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // Create a GLFWwindow object that we can use for GLFW's functions
-    //GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecto Final Equipo #10: Carga de modelos y camara sintetica", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecto Final Equipo #10: Carga de modelos y camara sintetica", nullptr, nullptr);
     
     // Pantalla completa para ver mejor el proyecto
-    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-    GLFWwindow* window = glfwCreateWindow(mode->width, mode->height,
-        "Proyecto Final Equipo #10", monitor, nullptr);
+    //GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+    //const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+    //GLFWwindow* window = glfwCreateWindow(mode->width, mode->height,
+    //    "Proyecto Final Equipo #10", monitor, nullptr);
 
     if (nullptr == window)
     {
@@ -178,6 +184,7 @@ int main()
     Shader lightingShader("Shader/lighting.vs", "Shader/lighting.frag");
     Shader shader("Shader/modelLoading.vs", "Shader/modelLoading.frag");
     Shader skyboxshader("Shader/skybox.vs", "Shader/skybox.frag");
+    Shader skinnedShader("Shader/_skin_runtime.vs", "Shader/_tex_runtime.frag");
 
     // Load models
     Model CashierArea((char*)"Models/CashierArea/CashierArea.obj");
@@ -186,6 +193,7 @@ int main()
 	Model Stand3((char*)"Models/Stand3/Stand3.obj");
 	Model Stand4((char*)"Models/Stand4/Stand4.obj");
 	Model Stand5((char*)"Models/Stand5/Stand5.obj");
+    Model Robot((char*)"Models/Robot/Robot.fbx");
 
     GLfloat skyboxVertices[] = {
         // Positions
@@ -280,7 +288,7 @@ int main()
 
     //Load textures
     // Skybox de día
-    vector <const GLchar*> faces;
+    std::vector<const GLchar*> faces;
     faces.push_back("SkyBox/day/right.png");
     faces.push_back("SkyBox/day/left.png");
     faces.push_back("SkyBox/day/top.png");
@@ -290,7 +298,7 @@ int main()
     GLuint cubemapDay = TextureLoading::LoadCubemap(faces);
 
     // Skybox de noche
-    vector<const GLchar*> facesNight;
+    std::vector<const GLchar*> facesNight;
     facesNight.push_back("SkyBox/night/right.png");
     facesNight.push_back("SkyBox/night/left.png");
     facesNight.push_back("SkyBox/night/top.png");
@@ -380,14 +388,12 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         CashierArea.Draw(lightingShader);
 
-
         model = glm::mat4(1);
         model = glm::translate(model, glm::vec3(-7.5f, 0.0f, -13.5f));
         model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         model = glm::scale(model, glm::vec3(0.6f, 0.8f, 0.6f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         Stand1.Draw(lightingShader);
-
 
         model = glm::mat4(1);
         model = glm::translate(model, glm::vec3(1.25f, 0.0f, -17.5f));
@@ -416,6 +422,46 @@ int main()
         model = glm::scale(model, glm::vec3(0.35f, 0.4f, 0.21f));
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         Stand5.Draw(lightingShader);
+
+        // Animación 1: Robot de bienvenida mostrando el recorrido del mapa
+        float animDuration = 1000.0f / 24.0f;
+
+        if (playAnimationRobot)
+        {
+            robotAnimTime += deltaTime;
+        }
+
+        // Mantener dentro del rango de la animación
+        float animTime = fmod(robotAnimTime, animDuration);
+
+        // Actualizar SIEMPRE el modelo
+        Robot.UpdateAnimation(animTime);
+
+        // Obtener matrices de huesos
+        std::vector<glm::mat4> bones;
+        Robot.GetBoneMatrices(bones, 100);
+
+        // Mandar al shader
+        skinnedShader.Use();
+        GLint bonesLoc = glGetUniformLocation(skinnedShader.Program, "bones");
+
+        if (bonesLoc >= 0 && !bones.empty())
+        {
+            glUniformMatrix4fv(bonesLoc, (GLsizei)bones.size(), GL_FALSE, &bones[0][0][0]);
+        }
+
+        // Matrices de cámara
+        glUniformMatrix4fv(glGetUniformLocation(skinnedShader.Program, "view"), 1, GL_FALSE,glm::value_ptr(view));
+        glUniformMatrix4fv(glGetUniformLocation(skinnedShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+
+        // Posicionar y dibujar
+        glm::mat4 modelAnim(1.0f);
+        modelAnim = glm::scale(modelAnim, glm::vec3(0.01f));
+        glUniformMatrix4fv(glGetUniformLocation(skinnedShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelAnim));
+
+        // Dibujar siempre
+        Robot.Draw(skinnedShader);
+        
 
         // Cubos indicadores de luces
 		// Comentados para que no se muestren al final, pues solo los usamos para verificar posiciones de luces durante el desarrollo
@@ -521,6 +567,11 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
             if (key == GLFW_KEY_P)
             {
                 lightsOn = !lightsOn;
+            }
+            // Activar/desactivar animación del robot con G 
+            if (key == GLFW_KEY_G)
+            {
+                playAnimationRobot = !playAnimationRobot;
             }
         }
         else if (action == GLFW_RELEASE)
