@@ -61,6 +61,8 @@ bool lightsOn = false;  // false = modo día (ambient alto, luces apagadas)
 bool playAnimationRobot = false;
 // Tiempo acumulado de animación del robot
 float robotAnimTime = 0.0f;
+// Constante exacta de frames hecha en blender
+const double animDuration = 41.4167;
 
 // Posiciones de las 3 point lights
 glm::vec3 pointLightPositions[] = {
@@ -308,6 +310,9 @@ int main()
     GLuint cubemapNight = TextureLoading::LoadCubemap(facesNight);
 
     glm::mat4 projection = glm::perspective(camera.GetZoom(), (float)SCREEN_WIDTH / (float)SCREEN_HEIGHT, 0.1f, 100.0f);
+    
+    // Impresion en pantalla para obtener la duración de la animación y que el modelo se mantenga en el último frame
+    // std::cout << "Duracion: " << Robot.GetAnimationDuration() << std::endl;
 
     // Game loop
     while (!glfwWindowShouldClose(window))
@@ -423,19 +428,17 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         Stand5.Draw(lightingShader);
 
-        // Animación 1: Robot de bienvenida mostrando el recorrido del mapa
-        float animDuration = 1000.0f / 24.0f;
-
         if (playAnimationRobot)
         {
             robotAnimTime += deltaTime;
+            if (robotAnimTime >= (float)animDuration)
+            {
+                robotAnimTime = (float)animDuration - 0.001f; // Se queda en el último frame
+                playAnimationRobot = false;                   // Se detiene solo
+            }
         }
 
-        // Mantener dentro del rango de la animación
-        float animTime = fmod(robotAnimTime, animDuration);
-
-        // Actualizar SIEMPRE el modelo
-        Robot.UpdateAnimation(animTime);
+        Robot.UpdateAnimation(robotAnimTime);
 
         // Obtener matrices de huesos
         std::vector<glm::mat4> bones;
@@ -571,7 +574,17 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
             // Activar/desactivar animación del robot con G 
             if (key == GLFW_KEY_G)
             {
-                playAnimationRobot = !playAnimationRobot;
+                if (robotAnimTime >= (float)animDuration - 0.01f)
+                {
+                    // Terminó: reiniciar
+                    robotAnimTime = 0.0f;
+                    playAnimationRobot = true;
+                }
+                else
+                {
+                    // En curso: pausar/reanudar
+                    playAnimationRobot = !playAnimationRobot;
+                }
             }
         }
         else if (action == GLFW_RELEASE)

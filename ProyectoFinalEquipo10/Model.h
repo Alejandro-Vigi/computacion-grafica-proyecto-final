@@ -153,6 +153,14 @@ public:
         for (size_t i = 0; i < m_BoneInfo.size() && i < maxBones; i++) out[i] = m_BoneInfo[i].finalTransform;
     }
 
+    // Calcular la duracion de la animacion para saber con exactitud el último frame
+    double GetAnimationDuration() const {
+        if (!scene || scene->mNumAnimations == 0) return 0.0;
+        const aiAnimation* a = scene->mAnimations[0];
+        double tps = (a->mTicksPerSecond != 0.0) ? a->mTicksPerSecond : 25.0;
+        return a->mDuration / tps;
+    }
+
 
 private:
     std::vector<Mesh> meshes;
