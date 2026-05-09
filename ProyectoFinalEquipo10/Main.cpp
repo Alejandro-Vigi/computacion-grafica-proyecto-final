@@ -64,6 +64,13 @@ float robotAnimTime = 0.0f;
 // Constante exacta de frames hecha en blender
 const double animDuration = 41.4167;
 
+// Control de animación del FBX del robot
+bool playWalking = false;
+// Tiempo acumulado de animación del robot
+float walkingAnimTime = 0.0f;
+// Constante exacta de frames hecha en blender
+const double walkingDuration = 16.1333;
+
 // Posiciones de las 3 point lights
 glm::vec3 pointLightPositions[] = {
     glm::vec3(2.05f, 6.3f,  32.75f),        // Lámpara foco #1
@@ -196,6 +203,9 @@ int main()
 	Model Stand4((char*)"Models/Stand4/Stand4.obj");
 	Model Stand5((char*)"Models/Stand5/Stand5.obj");
     Model Robot((char*)"Models/Robot/Robot.fbx");
+    Model Walking1((char*)"Models/Walking/Walking1.fbx");
+    Model Walking2((char*)"Models/Walking/Walking2.fbx");
+    Model Walking3((char*)"Models/Walking/Walking3.fbx");
 
     GLfloat skyboxVertices[] = {
         // Positions
@@ -428,6 +438,94 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(lightingShader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         Stand5.Draw(lightingShader);
 
+        skinnedShader.Use();
+        GLint bonesLoc = glGetUniformLocation(skinnedShader.Program, "bones");
+        std::vector<glm::mat4> identity(100, glm::mat4(1.0f));
+
+        glUniformMatrix4fv(bonesLoc, 100, GL_FALSE, &identity[0][0][0]);
+        if (playWalking)
+        {
+            walkingAnimTime += deltaTime;
+
+            if (walkingAnimTime >= (float)walkingDuration)
+            {
+                walkingAnimTime = (float)walkingDuration - 0.001f;
+                playWalking = false;
+            }
+        }
+        Walking1.UpdateAnimation(walkingAnimTime);
+        std::vector<glm::mat4> walkingBones;
+        Walking1.GetBoneMatrices(walkingBones, 100);
+        if (bonesLoc >= 0 && !walkingBones.empty())
+        {
+            glUniformMatrix4fv(
+                bonesLoc,
+                (GLsizei)walkingBones.size(),
+                GL_FALSE,
+                &walkingBones[0][0][0]
+            );
+        }
+        glm::mat4 modelWalk(1.0f);
+        modelWalk = glm::scale(modelWalk, glm::vec3(0.01f));
+        glUniformMatrix4fv(
+            glGetUniformLocation(skinnedShader.Program, "model"),
+            1,
+            GL_FALSE,
+            glm::value_ptr(modelWalk)
+        );
+        Walking1.Draw(skinnedShader);
+
+
+        // Walking 2
+        glUniformMatrix4fv(bonesLoc, 100, GL_FALSE, &identity[0][0][0]);
+        Walking2.UpdateAnimation(walkingAnimTime);
+        std::vector<glm::mat4> walkingBones2;
+        Walking2.GetBoneMatrices(walkingBones2, 100);
+        if (bonesLoc >= 0 && !walkingBones2.empty())
+        {
+            glUniformMatrix4fv(
+                bonesLoc,
+                (GLsizei)walkingBones2.size(),
+                GL_FALSE,
+                &walkingBones2[0][0][0]
+            );
+        }
+
+        glm::mat4 modelWalk2(1.0f);
+        modelWalk2 = glm::scale(modelWalk2, glm::vec3(0.01f));
+        glUniformMatrix4fv(
+            glGetUniformLocation(skinnedShader.Program, "model"),
+            1,
+            GL_FALSE,
+            glm::value_ptr(modelWalk2)
+        );
+        Walking2.Draw(skinnedShader);
+
+        // Walking 3
+        glUniformMatrix4fv(bonesLoc, 100, GL_FALSE, &identity[0][0][0]);
+        Walking3.UpdateAnimation(walkingAnimTime);
+        std::vector<glm::mat4> walkingBones3;
+        Walking3.GetBoneMatrices(walkingBones3, 100);
+        if (bonesLoc >= 0 && !walkingBones3.empty())
+        {
+            glUniformMatrix4fv(
+                bonesLoc,
+                (GLsizei)walkingBones3.size(),
+                GL_FALSE,
+                &walkingBones3[0][0][0]
+            );
+        }
+
+        glm::mat4 modelWalk3(1.0f);
+        modelWalk3 = glm::scale(modelWalk3, glm::vec3(0.01f));
+        glUniformMatrix4fv(
+            glGetUniformLocation(skinnedShader.Program, "model"),
+            1,
+            GL_FALSE,
+            glm::value_ptr(modelWalk3)
+        );
+        Walking3.Draw(skinnedShader);
+
         if (playAnimationRobot)
         {
             robotAnimTime += deltaTime;
@@ -446,7 +544,6 @@ int main()
 
         // Mandar al shader
         skinnedShader.Use();
-        GLint bonesLoc = glGetUniformLocation(skinnedShader.Program, "bones");
 
         if (bonesLoc >= 0 && !bones.empty())
         {
@@ -584,6 +681,22 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
                 {
                     // En curso: pausar/reanudar
                     playAnimationRobot = !playAnimationRobot;
+                }
+            }
+
+            // Activar/desactivar animación walking con H
+            if (key == GLFW_KEY_H)
+            {
+                if (walkingAnimTime >= (float)walkingDuration - 0.01f)
+                {
+                    // Terminó: reiniciar
+                    walkingAnimTime = 0.0f;
+                    playWalking = true;
+                }
+                else
+                {
+                    // En curso: pausar/reanudar
+                    playWalking = !playWalking;
                 }
             }
         }
