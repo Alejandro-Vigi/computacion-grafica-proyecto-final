@@ -64,12 +64,19 @@ float robotAnimTime = 0.0f;
 // Constante exacta de frames hecha en blender
 const double animDuration = 41.4167;
 
-// Control de animación del FBX del robot
+// Control de animación del FBX de las personas caminando
 bool playWalking = false;
-// Tiempo acumulado de animación del robot
+// Tiempo acumulado de animación de las personas caminando
 float walkingAnimTime = 0.0f;
 // Constante exacta de frames hecha en blender
 const double walkingDuration = 16.1333;
+
+// Control de animación talking
+bool playTalking = false;
+// Tiempo acumulado de animación talking
+float talkingAnimTime = 0.0f;
+// Constante exacta de frames hecha en blender
+const double talkingDuration = 21.9667;
 
 // Posiciones de las 3 point lights
 glm::vec3 pointLightPositions[] = {
@@ -206,6 +213,9 @@ int main()
     Model Walking1((char*)"Models/Walking/Walking1.fbx");
     Model Walking2((char*)"Models/Walking/Walking2.fbx");
     Model Walking3((char*)"Models/Walking/Walking3.fbx");
+    Model Talking((char*)"Models/Talking/Exhibitor.fbx");
+    Model Talking2((char*)"Models/Talking/Reader.fbx");
+    //Model Talking3((char*)"Models/Talking/Clipboard.fbx");
 
     GLfloat skyboxVertices[] = {
         // Positions
@@ -323,6 +333,8 @@ int main()
     
     // Impresion en pantalla para obtener la duración de la animación y que el modelo se mantenga en el último frame
     // std::cout << "Duracion: " << Robot.GetAnimationDuration() << std::endl;
+    // std::cout << "Walking duration: " << Walking1.GetAnimationDuration() << std::endl;
+    // std::cout << "Talking duration: " << Talking.GetAnimationDuration() << std::endl;
 
     // Game loop
     while (!glfwWindowShouldClose(window))
@@ -526,13 +538,72 @@ int main()
         );
         Walking3.Draw(skinnedShader);
 
+        // Talking 1
+        if (playTalking)
+        {
+            talkingAnimTime += deltaTime;
+
+            if (talkingAnimTime >= (float)talkingDuration)
+            {
+                talkingAnimTime = (float)talkingDuration - 0.001f;
+                playTalking = false;
+            }
+        }
+        glUniformMatrix4fv(bonesLoc, 100, GL_FALSE, &identity[0][0][0]);
+        Talking.UpdateAnimation(talkingAnimTime);
+        std::vector<glm::mat4> talkingBones1;
+        Talking.GetBoneMatrices(talkingBones1, 100);
+        if (bonesLoc >= 0 && !talkingBones1.empty())
+        {
+            glUniformMatrix4fv(
+                bonesLoc,
+                (GLsizei)talkingBones1.size(),
+                GL_FALSE,
+                &talkingBones1[0][0][0]
+            );
+        }
+        glm::mat4 modelTalk1(1.0f);
+        modelTalk1 = glm::scale(modelTalk1, glm::vec3(0.01f));
+        glUniformMatrix4fv(
+            glGetUniformLocation(skinnedShader.Program, "model"),
+            1,
+            GL_FALSE,
+            glm::value_ptr(modelTalk1)
+        );
+        Talking.Draw(skinnedShader);
+
+        // Talking 2
+        glUniformMatrix4fv(bonesLoc, 100, GL_FALSE, &identity[0][0][0]);
+        Talking2.UpdateAnimation(talkingAnimTime);
+        std::vector<glm::mat4> talkingBones2;
+        Talking2.GetBoneMatrices(talkingBones2, 100);
+        if (bonesLoc >= 0 && !talkingBones2.empty())
+        {
+            glUniformMatrix4fv(
+                bonesLoc,
+                (GLsizei)talkingBones2.size(),
+                GL_FALSE,
+                &talkingBones2[0][0][0]
+            );
+        }
+        glm::mat4 modelTalk2(1.0f);
+        modelTalk2 = glm::scale(modelTalk2, glm::vec3(0.01f));
+        glUniformMatrix4fv(
+            glGetUniformLocation(skinnedShader.Program, "model"),
+            1,
+            GL_FALSE,
+            glm::value_ptr(modelTalk2)
+        );
+
+        Talking2.Draw(skinnedShader);
+
         if (playAnimationRobot)
         {
             robotAnimTime += deltaTime;
             if (robotAnimTime >= (float)animDuration)
             {
-                robotAnimTime = (float)animDuration - 0.001f; // Se queda en el último frame
-                playAnimationRobot = false;                   // Se detiene solo
+                robotAnimTime = (float)animDuration - 0.001f;
+                playAnimationRobot = false;
             }
         }
 
@@ -697,6 +768,22 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
                 {
                     // En curso: pausar/reanudar
                     playWalking = !playWalking;
+                }
+            }
+
+            // Activar/desactivar animación talking con O
+            if (key == GLFW_KEY_O)
+            {
+                if (talkingAnimTime >= (float)talkingDuration - 0.01f)
+                {
+                    // Terminó: reiniciar
+                    talkingAnimTime = 0.0f;
+                    playTalking = true;
+                }
+                else
+                {
+                    // En curso: pausar/reanudar
+                    playTalking = !playTalking;
                 }
             }
         }
