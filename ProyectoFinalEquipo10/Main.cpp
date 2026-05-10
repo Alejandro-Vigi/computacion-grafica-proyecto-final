@@ -78,6 +78,13 @@ float talkingAnimTime = 0.0f;
 // Constante exacta de frames hecha en blender
 const double talkingDuration = 21.9667;
 
+// Control de animación Woman
+bool playWoman = false;
+// Tiempo acumulado de animación Woman
+float womanAnimTime = 0.0f;
+// Constante exacta de frames hecha en blender
+const double womanDuration = 42.4333;
+
 // Posiciones de las 3 point lights
 glm::vec3 pointLightPositions[] = {
     glm::vec3(2.05f, 6.3f,  32.75f),        // Lámpara foco #1
@@ -216,6 +223,7 @@ int main()
     Model Talking((char*)"Models/Talking/Exhibitor.fbx");
     Model Talking2((char*)"Models/Talking/Reader.fbx");
     Model Talking3((char*)"Models/Talking/Clipboard.fbx");
+    Model Woman((char*)"Models/Woman/Woman.fbx");
 
     GLfloat skyboxVertices[] = {
         // Positions
@@ -335,6 +343,7 @@ int main()
     // std::cout << "Duracion: " << Robot.GetAnimationDuration() << std::endl;
     // std::cout << "Walking duration: " << Walking1.GetAnimationDuration() << std::endl;
     // std::cout << "Talking duration: " << Talking.GetAnimationDuration() << std::endl;
+       std::cout << "Woman duration: " << Woman.GetAnimationDuration() << std::endl;
 
     // Game loop
     while (!glfwWindowShouldClose(window))
@@ -622,6 +631,43 @@ int main()
 
         Talking3.Draw(skinnedShader);
 
+
+        // Woman
+        if (playWoman)
+        {
+            womanAnimTime += deltaTime;
+
+            if (womanAnimTime >= (float)womanDuration)
+            {
+                womanAnimTime = (float)womanDuration - 0.001f;
+                playWoman = false;
+            }
+        }
+
+        glUniformMatrix4fv(bonesLoc, 100, GL_FALSE, &identity[0][0][0]);
+        Woman.UpdateAnimation(womanAnimTime);
+        std::vector<glm::mat4> womanBones;
+        Woman.GetBoneMatrices(womanBones, 100);
+        if (bonesLoc >= 0 && !womanBones.empty())
+        {
+            glUniformMatrix4fv(
+                bonesLoc,
+                (GLsizei)womanBones.size(),
+                GL_FALSE,
+                &womanBones[0][0][0]
+            );
+        }
+
+        glm::mat4 modelWoman(1.0f);
+        modelWoman = glm::scale(modelWoman, glm::vec3(0.01f));
+        glUniformMatrix4fv(
+            glGetUniformLocation(skinnedShader.Program, "model"),
+            1,
+            GL_FALSE,
+            glm::value_ptr(modelWoman)
+        );
+        Woman.Draw(skinnedShader);
+
         if (playAnimationRobot)
         {
             robotAnimTime += deltaTime;
@@ -809,6 +855,22 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
                 {
                     // En curso: pausar/reanudar
                     playTalking = !playTalking;
+                }
+            }
+
+            // Activar/desactivar animación Woman con I
+            if (key == GLFW_KEY_I)
+            {
+                if (womanAnimTime >= (float)womanDuration - 0.01f)
+                {
+                    // Terminó: reiniciar
+                    womanAnimTime = 0.0f;
+                    playWoman = true;
+                }
+                else
+                {
+                    // En curso: pausar/reanudar
+                    playWoman = !playWoman;
                 }
             }
         }
