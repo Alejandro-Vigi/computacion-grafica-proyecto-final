@@ -215,7 +215,7 @@ int main()
     Model Walking3((char*)"Models/Walking/Walking3.fbx");
     Model Talking((char*)"Models/Talking/Exhibitor.fbx");
     Model Talking2((char*)"Models/Talking/Reader.fbx");
-    //Model Talking3((char*)"Models/Talking/Clipboard.fbx");
+    Model Talking3((char*)"Models/Talking/Clipboard.fbx");
 
     GLfloat skyboxVertices[] = {
         // Positions
@@ -596,6 +596,31 @@ int main()
         );
 
         Talking2.Draw(skinnedShader);
+
+        // Talking 3
+        glUniformMatrix4fv(bonesLoc, 100, GL_FALSE, &identity[0][0][0]);
+        Talking3.UpdateAnimation(talkingAnimTime);
+        std::vector<glm::mat4> talkingBones3;
+        Talking3.GetBoneMatrices(talkingBones3, 100);
+        if (bonesLoc >= 0 && !talkingBones3.empty())
+        {
+            glUniformMatrix4fv(
+                bonesLoc,
+                (GLsizei)talkingBones3.size(),
+                GL_FALSE,
+                &talkingBones3[0][0][0]
+            );
+        }
+        glm::mat4 modelTalk3(1.0f);
+        modelTalk3 = glm::scale(modelTalk3, glm::vec3(0.01f));
+        glUniformMatrix4fv(
+            glGetUniformLocation(skinnedShader.Program, "model"),
+            1,
+            GL_FALSE,
+            glm::value_ptr(modelTalk3)
+        );
+
+        Talking3.Draw(skinnedShader);
 
         if (playAnimationRobot)
         {
