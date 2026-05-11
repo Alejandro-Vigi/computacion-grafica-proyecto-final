@@ -1,0 +1,26 @@
+# Blender 5.0.1 MTL File: 'Stand3.blend'
+# www.blender.org
+
+newmtl madera
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd madera.jpg
+map_Ns standing_chalkboard_01_frame_rough_1k.png
+map_refl standing_chalkboard_01_frame_metal_1k.png
+map_Bump -bm 1.000000 standing_chalkboard_01_frame_nor_gl_1k.png
+
+newmtl pantalla.001
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd Liverpool2.png
+map_Ns standing_chalkboard_01_board_rough_1k.png
+map_refl standing_chalkboard_01_board_metal_1k.png
+map_Bump -bm 1.000000 standing_chalkboard_01_board_nor_gl_1k.png
