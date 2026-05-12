@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  <img src="https://www.unamenlinea.unam.mx/sites/default/files/recursos/img/facultad-de-ingenieria.jpg" alt="Logo de la Facultad de Ingeniería UNAM" width="500"/>
+  <img src="https://www.unamenlinea.unam.mx/sites/default/files/recursos/img/facultad-de-ingenieria.jpg" alt="Logo de la Facultad de Ingeniería UNAM" width="300"/>
 </p>
 <p align="center">
   <em>Figura 1: Proyecto desarrollado para la materia de Computación Gráfica e Interacción Humano-Computadora 2026-2.</em>
@@ -31,8 +31,8 @@ El sistema integra múltiples elementos de **Interacción Humano-Computadora** p
 
 * **Navegación:** Control de cámara libre y fluida mediante teclado (`W, A, S, D`) y mouse.
 * **Ciclo Día/Noche:** Cambio dinámico de iluminación (luces direccionales, fijas y spots) y Skybox presionando la tecla `P`.
-* **Sistema de Stands:** Detección de clics mediante Ray Casting sobre el piso para activar la construcción animada de stands específicos a través de Keyframes.
 * **Animaciones Complejas:**  
+    * **Sistema de Stands:** Detección de clics mediante Ray Casting sobre el piso para activar la construcción animada de stands específicos a través de Keyframes.  
     * **Robot de bienvenida:** Secuencia de saludo y señalización (tecla `G`).  
     * **Flujo de visitantes:** Simulación de múltiples personas caminando por el lobby (tecla `H`).  
     * **Interacción de lanzamiento:** Una persona realizando un tiro de baloncesto hacia un aro, con física de trayectoria animada (tecla `L`).  
