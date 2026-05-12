@@ -1,4 +1,6 @@
-# Entorno Virtual Interactivo: Área de cajas de la planta baja del edificio A de la Facultad de Ingeniería (FI-UNAM).
+<h1 align="center">
+  Entorno Virtual Interactivo: Área de cajas de la planta baja del edificio A de la Facultad de Ingeniería (FI-UNAM).
+</h1>
 
 <p align="center">
   <img src="https://www.unamenlinea.unam.mx/sites/default/files/recursos/img/facultad-de-ingenieria.jpg" alt="Logo de la Facultad de Ingeniería UNAM" width="500"/>
