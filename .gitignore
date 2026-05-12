@@ -399,3 +399,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# === External Libraries ===
+# Forzar a Git a que NO ignore la carpeta de librerías y sus archivos
+!External Libraries/
+!External Libraries/**
+!*.lib
+!*.dll

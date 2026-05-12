@@ -285,7 +285,7 @@ int main()
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecto Final Equipo #10: Carga de modelos y camara sintetica", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecto Final Equipo #10", nullptr, nullptr);
     
     // Pantalla completa para ver mejor el proyecto
     //GLFWmonitor* monitor = glfwGetPrimaryMonitor();
