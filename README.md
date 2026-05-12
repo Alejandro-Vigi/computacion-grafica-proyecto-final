@@ -1,8 +1,11 @@
 # Entorno Virtual Interactivo: Área de cajas de la planta baja del edificio A de la Facultad de Ingeniería (FI-UNAM).
 
-![Logo de la Facultad de Ingeniería UNAM](https://www.unamenlinea.unam.mx/sites/default/files/recursos/img/facultad-de-ingenieria.jpg)
-<br>
-*Figura 1: Proyecto desarrollado para la materia de Computación Gráfica e Interacción Humano-Computadora 2026-2.*
+<p align="center">
+  <img src="https://www.unamenlinea.unam.mx/sites/default/files/recursos/img/facultad-de-ingenieria.jpg" alt="Logo de la Facultad de Ingeniería UNAM" width="500"/>
+</p>
+<p align="center">
+  <em>Figura 1: Proyecto desarrollado para la materia de Computación Gráfica e Interacción Humano-Computadora 2026-2.</em>
+</p>
 
 ## 📌 Descripción del Proyecto
 Este proyecto consiste en un entorno virtual interactivo tridimensional que reproduce la planta baja del **Edificio A de la Facultad de Ingeniería (UNAM).**
