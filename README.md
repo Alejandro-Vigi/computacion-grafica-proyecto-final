@@ -40,11 +40,21 @@ El sistema integra múltiples elementos de **Interacción Humano-Computadora** p
     * **Entorno interactivo:** NPCs en conversación y revisión de material informativo.
 
 ---
+---
 ### 🖼️ Galería de Referencia
-
-*Figura 2: Vista general del entorno virtual renderizado en tiempo real.*
-
-*Figura 3: Plano esquemático de la planta baja - Área de cajas FI-UNAM.*
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d578ec84-52a5-4acc-b9dc-b50abfb892b5" width="800"/>
+</p>
+<p align="center">
+  <em>Figura 2: Vista general del entorno virtual renderizado en tiempo real.</em>
+</p>
+  <br>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3a66f618-2eb1-4ae4-9c5d-e982fba741a4" width="800"/>
+</p>
+<p align="center">
+  <em>Figura 3: Plano esquemático de la planta baja - Área de cajas FI-UNAM.</em>
+</p>
 
 ---
 
