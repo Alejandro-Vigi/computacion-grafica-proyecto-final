@@ -1,0 +1,32 @@
+# Blender 5.0.1 MTL File: 'PantallaKaraoke1.blend'
+# www.blender.org
+
+newmtl Material.004
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/LapOne MX/Downloads/computacion-grafica-proyecto-final-main (1)/computacion-grafica-proyecto-final-main/ProyectoFinalEquipo10/Models/Stand1/negro.jpg
+
+newmtl Material.008
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd Karaoke4.jpg
+
+newmtl Material.009
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/LapOne MX/Downloads/computacion-grafica-proyecto-final-main (1)/computacion-grafica-proyecto-final-main/ProyectoFinalEquipo10/Models/Stand1/blanco.jpg
