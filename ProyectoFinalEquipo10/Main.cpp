@@ -13,6 +13,9 @@
 #include <cmath>
 #include <vector>
 
+#include <windows.h>
+#include <mmsystem.h>
+#pragma comment(lib, "winmm.lib")
 // GLEW
 #include <GL/glew.h>
 
@@ -93,6 +96,21 @@ bool playWoman = false;
 float womanAnimTime = 0.0f;
 // Constante exacta de frames hecha en blender
 const double womanDuration = 42.4333;
+
+// Control de animación Karaoke
+bool playKaraoke = false;
+
+// Tiempo acumulado de la animación Karaoke
+float karaokeAnimTime = 0.0f;
+
+// Duración aproximada. Luego la ajustamos con GetAnimationDuration()
+const double karaokeDuration = 8.3;
+bool mostrarPantallaKaraoke = false;
+
+bool musicaKaraokeAbierta = false;
+bool musicaKaraokePausada = false;
+
+const char* rutaMusicaKaraoke = "Sounds\\Karaoke.mp3";
 
 // Control de animación de la persona lanzando
 bool playPruebaAnim = false;
@@ -271,7 +289,110 @@ glm::vec3 Bezier3(glm::vec3 p0, glm::vec3 p1, glm::vec3 p2, float t)
         (2.0f * u * t * p1) +
         (t * t * p2);
 }
+void MostrarErrorMCI(MCIERROR error)
+{
+    if (error == 0)
+        return;
 
+    char textoError[256];
+
+    if (mciGetErrorStringA(error, textoError, sizeof(textoError)))
+    {
+        std::cout << "MCI ERROR: " << textoError << std::endl;
+    }
+    else
+    {
+        std::cout << "MCI ERROR desconocido: " << error << std::endl;
+    }
+}
+
+void AbrirMusicaKaraoke()
+{
+    if (musicaKaraokeAbierta)
+        return;
+
+    std::string comando = "open \"" + std::string(rutaMusicaKaraoke) + "\" alias karaokeSong";
+
+    MCIERROR error = mciSendStringA(comando.c_str(), NULL, 0, NULL);
+
+    if (error != 0)
+    {
+        std::cout << "No se pudo abrir la musica: " << rutaMusicaKaraoke << std::endl;
+        MostrarErrorMCI(error);
+        return;
+    }
+
+    musicaKaraokeAbierta = true;
+    musicaKaraokePausada = false;
+}
+
+void ReproducirMusicaKaraokeDesdeInicio()
+{
+    AbrirMusicaKaraoke();
+
+    if (!musicaKaraokeAbierta)
+        return;
+
+    MCIERROR error;
+
+    error = mciSendStringA("seek karaokeSong to start", NULL, 0, NULL);
+    MostrarErrorMCI(error);
+
+    error = mciSendStringA("play karaokeSong", NULL, 0, NULL);
+    MostrarErrorMCI(error);
+
+    musicaKaraokePausada = false;
+}
+
+void PausarMusicaKaraoke()
+{
+    if (!musicaKaraokeAbierta)
+        return;
+
+    MCIERROR error = mciSendStringA("pause karaokeSong", NULL, 0, NULL);
+    MostrarErrorMCI(error);
+
+    musicaKaraokePausada = true;
+}
+
+void ReanudarMusicaKaraoke()
+{
+    if (!musicaKaraokeAbierta)
+        return;
+
+    MCIERROR error = mciSendStringA("play karaokeSong", NULL, 0, NULL);
+    MostrarErrorMCI(error);
+
+    musicaKaraokePausada = false;
+}
+
+void DetenerMusicaKaraoke()
+{
+    if (!musicaKaraokeAbierta)
+        return;
+
+    MCIERROR error;
+
+    error = mciSendStringA("stop karaokeSong", NULL, 0, NULL);
+    MostrarErrorMCI(error);
+
+    error = mciSendStringA("seek karaokeSong to start", NULL, 0, NULL);
+    MostrarErrorMCI(error);
+
+    musicaKaraokePausada = false;
+}
+
+void CerrarMusicaKaraoke()
+{
+    if (!musicaKaraokeAbierta)
+        return;
+
+    mciSendStringA("stop karaokeSong", NULL, 0, NULL);
+    mciSendStringA("close karaokeSong", NULL, 0, NULL);
+
+    musicaKaraokeAbierta = false;
+    musicaKaraokePausada = false;
+}
 
 int main()
 {
@@ -400,9 +521,15 @@ int main()
     Model Talking3((char*)"Models/Talking/Clipboard.fbx");
     Model Woman((char*)"Models/Woman/Woman.fbx");
     Model PruebaAnim((char*)"Models/PruebaAnim/PruebaAnim.fbx");
+    Model Karaoke((char*)"Models/Karaoke/Karaoke.fbx");
+
     Model Aro((char*)"Models/PruebaAnim/Aro.obj");
     Model Pelota((char*)"Models/PruebaAnim/Pelota.obj");
-
+    Model PantallaKaraoke1((char*)"Models/KaraokeScreen/PantallaKaraoke1.obj");
+    Model PantallaKaraoke2((char*)"Models/KaraokeScreen/PantallaKaraoke2.obj");
+    Model PantallaKaraoke3((char*)"Models/KaraokeScreen/PantallaKaraoke3.obj");
+    Model PantallaKaraoke4((char*)"Models/KaraokeScreen/PantallaKaraoke4.obj");
+	
     GLfloat skyboxVertices[] = {
         // Positions
         -1.0f,  1.0f, -1.0f,
@@ -522,6 +649,7 @@ int main()
     // std::cout << "Walking duration: " << Walking1.GetAnimationDuration() << std::endl;
     // std::cout << "Talking duration: " << Talking.GetAnimationDuration() << std::endl;
       // std::cout << "Woman duration: " << Woman.GetAnimationDuration() << std::endl;
+    std::cout << "Karaoke duration: " << Karaoke.GetAnimationDuration() << std::endl;
 
     InicializarKeyFramesStand(stand1Anim);
     InicializarKeyFramesStand(stand2Anim);
@@ -593,6 +721,21 @@ int main()
         ActualizarAnimacionStand(stand3Anim);
         ActualizarAnimacionStand(stand4Anim);
         ActualizarAnimacionStand(stand5Anim);
+
+        // Actualizar tiempo de karaoke
+        if (playKaraoke)
+        {
+            karaokeAnimTime += deltaTime;
+
+            if (karaokeAnimTime >= (float)karaokeDuration)
+            {
+                karaokeAnimTime = (float)karaokeDuration - 0.001f;
+                playKaraoke = false;
+                mostrarPantallaKaraoke = false;
+
+                DetenerMusicaKaraoke();
+            }
+        }
 
         // Clear the colorbuffer
         glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
@@ -1139,6 +1282,75 @@ int main()
                 Banco2S5.Draw(lightingShader);
             }
         }
+        // Pantalla cambiante tipo karaoke
+        
+        if (mostrarPantallaKaraoke)
+        {
+            shader.Use();
+
+            glUniform1i(
+                glGetUniformLocation(shader.Program, "texture_diffuse1"),
+                0
+            );
+
+            glUniformMatrix4fv(
+                glGetUniformLocation(shader.Program, "view"),
+                1,
+                GL_FALSE,
+                glm::value_ptr(view)
+            );
+
+            glUniformMatrix4fv(
+                glGetUniformLocation(shader.Program, "projection"),
+                1,
+                GL_FALSE,
+                glm::value_ptr(projection)
+            );
+
+            glm::mat4 modelPantallaKaraoke(1.0f);
+
+            modelPantallaKaraoke = glm::translate(
+                modelPantallaKaraoke,
+                glm::vec3(-0.4f, 1.13f, -9.5f)
+            );
+
+            modelPantallaKaraoke = glm::rotate(
+                modelPantallaKaraoke,
+                glm::radians(90.0f),
+                glm::vec3(1.0f, 0.0f, 0.0f)
+            );
+
+            modelPantallaKaraoke = glm::scale(
+                modelPantallaKaraoke,
+                glm::vec3(0.3f)
+            );
+
+            glUniformMatrix4fv(
+                glGetUniformLocation(shader.Program, "model"),
+                1,
+                GL_FALSE,
+                glm::value_ptr(modelPantallaKaraoke)
+            );
+
+            float tiempoPorPantalla = (float)karaokeDuration / 4.0f;
+            int pantallaActual = (int)(karaokeAnimTime / tiempoPorPantalla);
+
+            if (pantallaActual < 0)
+                pantallaActual = 0;
+
+            if (pantallaActual > 3)
+                pantallaActual = 3;
+
+            if (pantallaActual == 0)
+                PantallaKaraoke1.Draw(shader);
+            else if (pantallaActual == 1)
+                PantallaKaraoke2.Draw(shader);
+            else if (pantallaActual == 2)
+                PantallaKaraoke3.Draw(shader);
+            else
+                PantallaKaraoke4.Draw(shader);
+        }
+   
 
         //Animación de Persona lanzando 
         personaShader.Use();
@@ -1379,7 +1591,31 @@ int main()
 
 
 
+   /*     skinnedShader.Use();
+        GLint bonesLoc = glGetUniformLocation(skinnedShader.Program, "bones");
+        std::vector<glm::mat4> identity(100, glm::mat4(1.0f));*/
+
         skinnedShader.Use();
+
+        glUniform1i(
+            glGetUniformLocation(skinnedShader.Program, "texture_diffuse1"),
+            0
+        );
+
+        glUniformMatrix4fv(
+            glGetUniformLocation(skinnedShader.Program, "view"),
+            1,
+            GL_FALSE,
+            glm::value_ptr(view)
+        );
+
+        glUniformMatrix4fv(
+            glGetUniformLocation(skinnedShader.Program, "projection"),
+            1,
+            GL_FALSE,
+            glm::value_ptr(projection)
+        );
+
         GLint bonesLoc = glGetUniformLocation(skinnedShader.Program, "bones");
         std::vector<glm::mat4> identity(100, glm::mat4(1.0f));
 
@@ -1551,6 +1787,84 @@ int main()
 
         Talking3.Draw(skinnedShader);
 
+      
+
+        //glUniformMatrix4fv(bonesLoc, 100, GL_FALSE, &identity[0][0][0]);
+
+        //Karaoke.UpdateAnimation(karaokeAnimTime);
+
+        //std::vector<glm::mat4> karaokeBones;
+        //Karaoke.GetBoneMatrices(karaokeBones, 100);
+        //static bool imprimioKaraokeBones = false;
+
+        //if (!imprimioKaraokeBones)
+        //{
+        //    std::cout << "Karaoke bones enviados: " << karaokeBones.size() << std::endl;
+        //    imprimioKaraokeBones = true;
+        //}
+
+        //if (bonesLoc >= 0 && !karaokeBones.empty())
+        //{
+        //    glUniformMatrix4fv(
+        //        bonesLoc,
+        //        (GLsizei)karaokeBones.size(),
+        //        GL_FALSE,
+        //        &karaokeBones[0][0][0]
+        //    );
+        //}
+
+        //glm::mat4 modelKaraoke(1.0f);
+
+        //// Ajusta estos valores según dónde quieras que aparezca
+        //modelKaraoke = glm::translate(modelKaraoke, glm::vec3(0.0f, 0.0f, 0.0f));
+        ////modelKaraoke = glm::rotate(modelKaraoke, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        //modelKaraoke = glm::scale(modelKaraoke, glm::vec3(0.01f));
+
+        //glUniformMatrix4fv(
+        //    glGetUniformLocation(skinnedShader.Program, "model"),
+        //    1,
+        //    GL_FALSE,
+        //    glm::value_ptr(modelKaraoke)
+        //);
+
+        //Karaoke.Draw(skinnedShader);
+
+    // Animación Karaoke
+   
+
+        glUniformMatrix4fv(bonesLoc, 100, GL_FALSE, &identity[0][0][0]);
+
+        Karaoke.UpdateAnimation(karaokeAnimTime);
+
+        std::vector<glm::mat4> karaokeBones;
+        Karaoke.GetBoneMatrices(karaokeBones, 100);
+     
+
+        if (bonesLoc >= 0 && !karaokeBones.empty())
+        {
+            glUniformMatrix4fv(
+                bonesLoc,
+                (GLsizei)karaokeBones.size(),
+                GL_FALSE,
+                &karaokeBones[0][0][0]
+            );
+        }
+
+        glm::mat4 modelKaraoke(1.0f);
+
+       
+        modelKaraoke = glm::translate(modelKaraoke, glm::vec3(0.0f, 0.0f, 0.0f));
+        //modelKaraoke = glm::rotate(modelKaraoke, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        modelKaraoke = glm::scale(modelKaraoke, glm::vec3(0.01f));
+
+        glUniformMatrix4fv(
+            glGetUniformLocation(skinnedShader.Program, "model"),
+            1,
+            GL_FALSE,
+            glm::value_ptr(modelKaraoke)
+        );
+
+        Karaoke.Draw(skinnedShader);
 
         // Woman
         if (playWoman)
@@ -1717,6 +2031,8 @@ int main()
     glDeleteBuffers(1, &EBO);
     glDeleteVertexArrays(1, &skyboxVAO);
     glDeleteBuffers(1, &skyboxVBO);
+
+    CerrarMusicaKaraoke();
 
     glfwTerminate();
     return 0;
@@ -2287,6 +2603,35 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
                     mostrarLanzamiento = true;
                 }
             }
+
+            // Activar/desactivar animación Karaoke con K
+        // Activar / pausar karaoke con K
+            if (key == GLFW_KEY_K)
+            {
+                // Si no se está mostrando o ya terminó, inicia desde cero
+                if (!mostrarPantallaKaraoke || karaokeAnimTime >= (float)karaokeDuration - 0.01f)
+                {
+                    karaokeAnimTime = 0.0f;
+                    playKaraoke = true;
+                    mostrarPantallaKaraoke = true;
+
+                    ReproducirMusicaKaraokeDesdeInicio();
+                }
+                else
+                {
+                    // Si ya estaba iniciado, K pausa o reanuda
+                    playKaraoke = !playKaraoke;
+
+                    if (playKaraoke)
+                    {
+                        ReanudarMusicaKaraoke();
+                    }
+                    else
+                    {
+                        PausarMusicaKaraoke();
+                    }
+                }
+            }
         }
         else if (action == GLFW_RELEASE)
         {
@@ -2294,6 +2639,7 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
         }
     }
 }
+
  
 void MouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 {
